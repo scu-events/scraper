@@ -17,7 +17,7 @@ type Event struct {
 	Description string   `json:"description"`
 	Location    string   `json:"location"`
 	Start       DateTime `json:"start"`
-	end         DateTime `json:"end"`
+	End         DateTime `json:"end"`
 }
 
 func Crawl(url string) {
@@ -38,10 +38,12 @@ func Crawl(url string) {
 
 	fmt.Printf("\nData \n")
 	for _, item := range data["items"] {
-		fmt.Printf("Summary:\n")
+		fmt.Printf("\n\nSummary:\n")
 		fmt.Println(item.Summary)
 		fmt.Printf("Description:\n")
 		fmt.Println(item.Description)
+		fmt.Printf("Start Time:\n")
+		fmt.Printf(item.Start.DateTime)
 	}
 	return
 }
