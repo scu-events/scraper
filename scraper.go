@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 )
 
 type DateTime struct {
@@ -38,16 +39,24 @@ func Crawl(url string) {
 
 	fmt.Printf("\nData \n")
 	for _, item := range data["items"] {
-		fmt.Printf("Summary:\n")
+		item.Summary = strings.TrimSpace(item.Summary);
+		item.Description = strings.TrimSpace(item.Description);		
+
+		//fmt.Printf("Summary:\n")
 		fmt.Println(item.Summary)
 		fmt.Printf("Description:\n")
 		fmt.Println(item.Description)
+		fmt.Printf("\n")
 	}
 	return
 }
 
 func main() {
-	urls := []string{"https://www.googleapis.com/calendar/v3/calendars/santaclara.acm@gmail.com/events?key=AIzaSyCnRyFyPuJ9WSeu602Q7CE13TsxWVNbw10&timeMin=2018-02-24T00:00:00Z&timeMax=2018-04-09T00:00:00Z&singmaxResults=9999&_=1520708172234", "https://clients6.google.com/calendar/v3/calendars/csl@scu.edu/events?calendarId=csl@scu.edu&singleEvents=true&timeZone=America/Los_Angeles&maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=2018-02-26T00:00:00-08:00&timeMax=2018-04-02T00:00:00-08:00&key=AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs"}
+
+	urls := []string{
+					"https://www.googleapis.com/calendar/v3/calendars/santaclara.acm@gmail.com/events?key=AIzaSyCnRyFyPuJ9WSeu602Q7CE13TsxWVNbw10&timeMin=2018-02-24T00:00:00Z&timeMax=2030-04-09T00:00:00Z&singmaxResults=9999&_=1520708172234", 
+					"https://clients6.google.com/calendar/v3/calendars/csl@scu.edu/events?calendarId=csl@scu.edu&singleEvents=true&timeZone=America/Los_Angeles&maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=2018-02-26T00:00:00-08:00&timeMax=2018-04-02T00:00:00-08:00&key=AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs" }
+
 	for _, url := range urls {
 		Crawl(url)
 	}
