@@ -44,10 +44,12 @@ func Crawl(url string) {
 
 		//fmt.Printf("Summary:\n")
 		fmt.Println(item.Summary)
+		fmt.Printf("Start Time: ")
+		fmt.Println(item.Start.DateTime)
 		fmt.Printf("Description:\n")
 		fmt.Println(item.Description)
-		fmt.Printf("Start Time:\n")
-		fmt.Printf(item.Start.DateTime)
+
+		fmt.Printf("\n")
 	}
 	return
 }
