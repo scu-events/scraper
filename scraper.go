@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 	"io/ioutil"
-	"log"
+	//"log"
 	"net/http"
 	"strings"
 
@@ -60,12 +60,12 @@ func CrawlGoogleCal(url string, calendarId string) {
 
 		fmt.Printf("\n")
 
-		event, err = srv.Events.Insert(calendarId, item).Do()
-		if err != nil {
-  			log.Fatalf("Unable to create event. %v\n", err)
-		}
+	//	event, err = srv.Events.Insert(calendarId, item).Do()
+	//	if err != nil {
+  	//		log.Fatalf("Unable to create event. %v\n", err)
+	//	}
 		
-		fmt.Printf("Event created: %s\n", item.HtmlLink)
+	//	fmt.Printf("Event created: %s\n", item.HtmlLink)
 
 	}
 	return
